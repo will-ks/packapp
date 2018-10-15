@@ -1,5 +1,62 @@
-<form #form="ngForm" novalidate>
+<form #createForm="ngForm" novalidate>
   <div class="field">
-    <input type="text" name="url" [(ngModel)]="url" />
+    <input type="text" name="url" placeholder="http://" [(ngModel)]="form.url" required />
+  </div>
+  <div class="field">
+    <input type="text" name="appName" placeholder="App name" [(ngModel)]="form.appName" required />
+  </div>
+  <div class="field">
+    <input type="file" name="splashScreen" [(ngModel)]="form.splashScreen" required />
+  </div>
+  <div class="field">
+    <input type="file" name="launcherIcon" [(ngModel)]="form.launcherIcon" required />
+  </div>
+  <div class="field">
+    <input [value]="form.primaryColor" [(colorPicker)]="form.primaryColor" [style.background]="form.primaryColor"
+      [cpOutputFormat]="'hex'" required />
+  </div>
+  <div class="field">
+    <input [value]="form.secondaryColor" [(colorPicker)]="form.secondaryColor" [style.background]="form.secondaryColor"
+      [cpOutputFormat]="'hex'" required />
+  </div>
+  <div class="field">
+    <label for="gps">Enable GPS / Location</label>
+    <input type="checkbox" name="gps" id="gps" [(ngModel)]="form.gps" />
+  </div>
+  <div class="field">
+    <label for="uploads">Enable File Uploads</label>
+    <input type="checkbox" name="uploads" id="uploads" [(ngModel)]="form.uploads" />
+  </div>
+  <div class="field">
+    <label for="camera">Enable Camera Use</label>
+    <input type="checkbox" name="camera" id="camera" [(ngModel)]="form.camera" />
+  </div>
+  <div class="field">
+    <label for="externalUrls">Open External URLs In Default Browser, Not In App</label>
+    <input type="checkbox" name="externalUrls" id="externalUrls" [(ngModel)]="form.externalUrls" />
+  </div>
+  <div class="field">
+    <label for="progressBar">Show In-App Loading Progress Bar</label>
+    <input type="checkbox" name="progressBar" id="progressBar" [(ngModel)]="form.progressBar" />
+  </div>
+  <div class="field">
+    <label for="zoom">Enable Pinch Zoom</label>
+    <input type="checkbox" name="zoom" id="zoom" [(ngModel)]="form.zoom" />
+  </div>
+  <div class="field">
+    <label for="rating">Enable Rating Request Prompt</label>
+    <input type="checkbox" name="rating" id="rating" [(ngModel)]="form.rating" />
+  </div>
+  <div class="field" *ngIf="form.rating">
+    <label for="ratingDays">After how many days should the rating request prompt be shown?</label>
+    <input type="number" name="ratingDays" id="ratingDays" [(ngModel)]="form.ratingDays" />
+  </div>
+  <div class="field">
+    <label for="portrait">Portrait</label>
+    <input type="checkbox" name="portrait" id="portrait" [(ngModel)]="form.portrait" />
+  </div>
+  <div class="field">
+    <label for="landscape">Landscape</label>
+    <input type="checkbox" name="landscape" id="landscape" [(ngModel)]="form.landscape" />
   </div>
 </form>
