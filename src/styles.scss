@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+// --- Mixins --- //
+@import 'scss/_mixins';
+
+// --- Variables --- //
+@import 'scss/_variables';
+
+// --- Reset --- //
+
+@import 'scss/_reset';
+
+// --- Normalize --- //
+@import 'scss/_normalize';
+
+// --- Typography --- //
+
+@import 'scss/_typography';
+
+@import 'scss/_layout';
+
+// --- Components --- //
+
+@import 'scss/components/_forms';
+@import 'scss/components/_buttons';
+@import 'scss/components/_navbar';
+@import 'scss/components/_footer';
+@import 'scss/components/_cards';
+@import 'scss/components/_lists';
+@import 'scss/components/_toolbars';
+
+// --- Pages overrides --- //
+
+// --- Helpers --- //
+
+@import 'scss/_helpers';

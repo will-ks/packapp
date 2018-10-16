@@ -1,0 +1,36 @@
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+li {
+  width: 100%;
+
+  @media (min-width: $small) and (max-width: $large) {
+    width: 50%;
+    &:nth-of-type(odd) {
+      padding-right: 9px;
+    }
+    &:nth-of-type(even) {
+      padding-left: 9px;
+    }
+  }
+
+  @media (min-width: $large) {
+    width: 33.33%;
+    &:nth-of-type(3n+1) {
+      padding-right: 6px;
+    }
+    &:nth-of-type(3n+2) {
+      padding-right: 3px;
+
+      padding-left: 3px;
+    }
+    &:nth-of-type(3n + 0) {
+      padding-left: 6px;
+    }
+  }
+
+}

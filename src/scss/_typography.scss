@@ -1,0 +1,62 @@
+// Body base
+body {
+  font: $font-style $font-variant $font-weight #{$font-size}/#{$line-height} $font-family;
+  color: $font-color;
+  font-size: $body-font-size;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: $margins;
+  font-weight: $heading-font-weight;
+  font-family: $heading-font-family;
+  line-height: $heading-line-height;
+  color: $heading-font-color;
+}
+
+h5 {
+  color: lighten($heading-font-color, 30%)
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  &:hover,
+  &:active,
+  &:focus {
+      color: $link-hover-color;
+      text-decoration: underline;
+  }
+}
+
+.validation {
+  color: $error;
+}
+
+nav {
+  a {
+    color: $nav-link-color;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $nav-link-color;
+    }
+    &:focus {
+      text-decoration: none;
+    }
+  }
+  
+  .nav-logo {
+    width: 50%;
+    display: inline-block;
+  }
+
+  .nav-links {
+    width: 50%;
+    text-align: right;
+    display: inline-block;
+  }
+}
