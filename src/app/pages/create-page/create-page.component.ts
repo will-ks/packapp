@@ -24,8 +24,13 @@ export class CreatePageComponent implements OnInit {
     uploads: false,
     zoom: false
   };
+  step = 1;
 
   constructor() {}
 
   ngOnInit() {}
+
+  nextStep() {
+    this.step++;
+  }
 }
