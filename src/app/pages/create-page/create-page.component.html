@@ -1,26 +1,36 @@
 <section class="section">
-  <div class="container">
+  <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+    <ul>
+      <li [class.is-active]="step === 1"><a (click)="setStep(1)">●</a></li>
+      <li [class.is-active]="step === 2"><a (click)="setStep(2)">●</a></li>
+      <li [class.is-active]="step === 3"><a (click)="setStep(3)">●</a></li>
+      <li [class.is-active]="step === 4"><a (click)="setStep(4)">●</a></li>
+      <li [class.is-active]="step === 5"><a (click)="setStep(5)">●</a></li>
+      <li [class.is-active]="step === 6"><a (click)="setStep(6)">●</a></li>
+    </ul>
+  </nav>
+  <div class="container box">
     <form #createForm="ngForm" novalidate>
       <div class="step" *ngIf="step === 1">
         <div class="field">
-          <label class="label">Web App URL</label>
+          <label class="label is-large">Web App URL</label>
           <div class="control">
             <input class="input" type="text" name="url" placeholder="http://" [(ngModel)]="form.url" required />
           </div>
           <p class="help">The full URL to your web app, to load in the webview.</p>
         </div>
         <div class="field">
-          <label class="label">App Name</label>
+          <label class="label is-large">App Name</label>
           <div class="control">
             <input class="input" type="text" name="appName" placeholder="App name" [(ngModel)]="form.appName" required />
           </div>
           <p class="help">The name of your app, will also form the name of your apk package.</p>
         </div>
-        <button class="button" (click)="nextStep()">Next</button>
+        <button class="button is-primary" (click)="nextStep()">Next</button>
       </div>
       <div class="step" *ngIf="step === 2">
         <div class="field">
-          <label class="label">Splash Screen Image</label>
+          <label class="label is-large">Splash Screen Image</label>
           <div class="file has-name">
             <label class="file-label">
               <input class="file-input" type="file" name="splashScreen" [(ngModel)]="form.splashScreen">
@@ -39,11 +49,11 @@
           </div>
           <p class="help">Appears while your web app is loading. Should be 500 x 195 pixels.</p>
         </div>
-        <button class="button" (click)="nextStep()">Next</button>
+        <button class="button is-primary" (click)="nextStep()">Next</button>
       </div>
       <div class="step" *ngIf="step === 3">
         <div class="field">
-          <label class="label">Launcher Icon</label>
+          <label class="label is-large">Launcher Icon</label>
           <div class="file has-name">
             <label class="file-label">
               <input class="file-input" type="file" name="launcherIcon" [(ngModel)]="form.launcherIcon">
@@ -62,30 +72,31 @@
           </div>
           <p class="help">Your app's icon. Should be of equal width and height, and a minimum of 192 x 192 pixels.</p>
         </div>
-        <button class="button" (click)="nextStep()">Next</button>
+        <button class="button is-primary" (click)="nextStep()">Next</button>
       </div>
       <div class="step" *ngIf="step === 4">
         <div class="field">
-          <label class="label">Primary Color</label>
+          <label class="label is-large">Primary Color</label>
           <div class="control">
             <input class="button" [value]="form.primaryColor" [(colorPicker)]="form.primaryColor" [style.background]="form.primaryColor"
               [cpOutputFormat]="'hex'" required />
           </div>
         </div>
         <div class="field">
-          <label class="label">Primary Dark Color</label>
+          <label class="label is-large">Primary Dark Color</label>
           <div class="control">
             <input class="button" [value]="form.secondaryColor" [(colorPicker)]="form.secondaryColor"
               [style.background]="form.secondaryColor" [cpOutputFormat]="'hex'" required />
           </div>
-          <p class="help">Choose the colors for your app to use. Primary color forms the background, while primary dark
+          <p class="help">Choose the colors for your app to use. Primary color forms the background, while primary
+            dark
             forms the status bar.</p>
         </div>
-        <button class="button" (click)="nextStep()">Next</button>
+        <button class="button is-primary" (click)="nextStep()">Next</button>
       </div>
       <div class="step" *ngIf="step === 5">
         <div class="field">
-          <label class="label">App Settings</label>
+          <label class="label is-large">App Settings</label>
           <div class="control">
             <label class="checkbox" for="gps">
               <input type="checkbox" name="gps" id="gps" [(ngModel)]="form.gps" />
@@ -146,11 +157,11 @@
             <input class="input" type="number" name="ratingDays" id="ratingDays" [(ngModel)]="form.ratingDays" />
           </label>
         </div>
-        <button class="button" (click)="nextStep()">Next</button>
+        <button class="button is-primary" (click)="nextStep()">Next</button>
       </div>
       <div class="step" *ngIf="step === 6">
         <div class="field">
-          <label class="label">Orientations</label>
+          <label class="label is-large">Orientations</label>
           <div class="control">
             <label class="checkbox" for="portrait">
               <input type="checkbox" name="portrait" id="portrait" [(ngModel)]="form.portrait" />

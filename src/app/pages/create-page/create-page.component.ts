@@ -33,4 +33,8 @@ export class CreatePageComponent implements OnInit {
   nextStep() {
     this.step++;
   }
+
+  setStep(step: number) {
+    this.step = step;
+  }
 }
