@@ -16,7 +16,8 @@
         <div class="field">
           <label class="label is-large">Web App URL</label>
           <div class="control">
-            <input class="input" type="text" name="url" placeholder="http://" [(ngModel)]="form.url" required />
+            <input class="input" [class.is-danger]="feedbackEnabled && url.invalid" type="text" name="url" placeholder="http://"
+              [(ngModel)]="form.url" #url="ngModel" pattern='^(ftp|http|https):\/\/[^ "]+$' required />
           </div>
           <p class="help">The full URL to your web app, to load in the webview.</p>
         </div>
@@ -25,7 +26,8 @@
         <div class="field">
           <label class="label is-large">App Name</label>
           <div class="control">
-            <input class="input" type="text" name="appName" placeholder="App name" [(ngModel)]="form.appName" required />
+            <input class="input" [class.is-danger]="feedbackEnabled && appName.invalid" type="text" name="appName"
+              placeholder="App name" [(ngModel)]="form.appName" #appName="ngModel" required />
           </div>
           <p class="help">The name of your app, will also form the name of your apk package.</p>
         </div>
@@ -33,9 +35,10 @@
       <div class="step" *ngIf="step === 3">
         <div class="field">
           <label class="label is-large">Splash Screen Image</label>
-          <div class="file has-name">
+          <div class="file" [class.is-danger]="feedbackEnabled && splashScreen.invalid">
             <label class="file-label">
-              <input class="file-input" type="file" name="splashScreen" [(ngModel)]="form.splashScreen" (change)="fileChangeEvent($event, 'splashScreen')">
+              <input class="file-input" type="file" name="splashScreen" [(ngModel)]="form.splashScreen" #splashScreen="ngModel"
+                (change)="fileChangeEvent($event, 'splashScreen')" required accept="image/*">
               <span class="file-cta">
                 <span class="file-icon">
                   <i class="fas fa-upload"></i>
@@ -43,9 +46,6 @@
                 <span class="file-label">
                   Choose a file…
                 </span>
-              </span>
-              <span class="file-name">
-                {{form.splashScreen || 'Empty'}}
               </span>
             </label>
           </div>
@@ -66,9 +66,10 @@
       <div class="step" *ngIf="step === 4">
         <div class="field">
           <label class="label is-large">Launcher Icon</label>
-          <div class="file has-name">
+          <div class="file" [class.is-danger]="feedbackEnabled && launcherIcon.invalid">
             <label class="file-label">
-              <input class="file-input" type="file" name="launcherIcon" [(ngModel)]="form.launcherIcon" (change)="fileChangeEvent($event, 'launcherIcon')">
+              <input class="file-input" type="file" name="launcherIcon" [(ngModel)]="form.launcherIcon" #launcherIcon="ngModel"
+                (change)="fileChangeEvent($event, 'launcherIcon')" required accept="image/*">
               <span class="file-cta">
                 <span class="file-icon">
                   <i class="fas fa-upload"></i>
@@ -76,9 +77,6 @@
                 <span class="file-label">
                   Choose a file…
                 </span>
-              </span>
-              <span class="file-name">
-                {{form.launcherIcon || 'Empty'}}
               </span>
             </label>
           </div>
@@ -89,7 +87,7 @@
             <div class="column">
               <div class="file-cropper box has-text-centered">
                 <image-cropper [imageChangedEvent]="cropperImageChangedEvents.launcherIcon" [maintainAspectRatio]="true"
-                  [aspectRatio]="100 / 39" [resizeToWidth]="500" format="png" (imageCropped)="imageCropped($event, 'launcherIcon')"></image-cropper>
+                  [aspectRatio]="1 / 1" format="png" (imageCropped)="imageCropped($event, 'launcherIcon')"></image-cropper>
               </div>
             </div>
             <div class="column has-text-centered"><img [src]="form.launcherIcon" /></div>
@@ -208,7 +206,7 @@
       </a>
     </p>
     <p class="control">
-      <a class="button is-primary" (click)="nextStep()" *ngIf="step < numberOfSteps">
+      <a class="button is-primary" (click)="nextStep(createForm)" *ngIf="step < numberOfSteps">
         Next
       </a>
     </p>

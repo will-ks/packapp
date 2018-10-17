@@ -32,13 +32,19 @@ export class CreatePageComponent implements OnInit {
     splashScreen: null,
     launcherIcon: null
   };
+  feedbackEnabled = false;
 
   constructor() {}
 
   ngOnInit() {}
 
-  nextStep() {
-    this.step++;
+  nextStep(form) {
+    if (form.valid) {
+      this.step++;
+      this.feedbackEnabled = false;
+    } else {
+      this.feedbackEnabled = true;
+    }
   }
 
   previousStep() {
