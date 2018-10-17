@@ -201,17 +201,17 @@
   </div>
   <div class="field is-grouped is-grouped-centered">
     <p class="control">
-      <a class="button is-light" (click)="previousStep()" *ngIf="step > 1">
+      <a class="button is-light" (click)="handlePreviousStep()" *ngIf="step > 1">
         Back
       </a>
     </p>
     <p class="control">
-      <a class="button is-primary" (click)="nextStep(createForm)" *ngIf="step < numberOfSteps">
+      <a class="button is-primary" (click)="handleNextStep(createForm)" *ngIf="step < numberOfSteps">
         Next
       </a>
     </p>
     <p class="control">
-      <a class="button is-primary" (click)="submit()" *ngIf="step === numberOfSteps">
+      <a class="button is-primary" (click)="handleSubmit()" *ngIf="step === numberOfSteps">
         Submit
       </a>
     </p>

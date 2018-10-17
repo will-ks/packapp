@@ -38,7 +38,9 @@ export class CreatePageComponent implements OnInit {
 
   ngOnInit() {}
 
-  nextStep(form) {
+  // --- Controller API --- //
+
+  handleNextStep(form) {
     if (form.valid) {
       this.step++;
       this.feedbackEnabled = false;
@@ -47,9 +49,11 @@ export class CreatePageComponent implements OnInit {
     }
   }
 
-  previousStep() {
+  handlePreviousStep() {
     this.step--;
   }
+
+  // --- Utility Functions --- //
 
   setStep(step: number) {
     this.step = step;
@@ -58,6 +62,7 @@ export class CreatePageComponent implements OnInit {
   fileChangeEvent(event: any, file: string): void {
     this.cropperImageChangedEvents[file] = event;
   }
+
   imageCropped(event: ImageCroppedEvent, file: string) {
     this.form[file] = event.base64;
   }
