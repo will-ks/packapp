@@ -7,6 +7,7 @@
       <li [class.is-active]="step === 4"><a (click)="setStep(4)">●</a></li>
       <li [class.is-active]="step === 5"><a (click)="setStep(5)">●</a></li>
       <li [class.is-active]="step === 6"><a (click)="setStep(6)">●</a></li>
+      <li [class.is-active]="step === 7"><a (click)="setStep(7)">●</a></li>
     </ul>
   </nav>
   <div class="container box">
@@ -19,6 +20,8 @@
           </div>
           <p class="help">The full URL to your web app, to load in the webview.</p>
         </div>
+      </div>
+      <div class="step" *ngIf="step === 2">
         <div class="field">
           <label class="label is-large">App Name</label>
           <div class="control">
@@ -26,9 +29,8 @@
           </div>
           <p class="help">The name of your app, will also form the name of your apk package.</p>
         </div>
-        <button class="button is-primary" (click)="nextStep()">Next</button>
       </div>
-      <div class="step" *ngIf="step === 2">
+      <div class="step" *ngIf="step === 3">
         <div class="field">
           <label class="label is-large">Splash Screen Image</label>
           <div class="file has-name">
@@ -43,15 +45,14 @@
                 </span>
               </span>
               <span class="file-name">
-                {{form.splashScreen}}
+                {{form.splashScreen || 'Empty'}}
               </span>
             </label>
           </div>
           <p class="help">Appears while your web app is loading. Should be 500 x 195 pixels.</p>
         </div>
-        <button class="button is-primary" (click)="nextStep()">Next</button>
       </div>
-      <div class="step" *ngIf="step === 3">
+      <div class="step" *ngIf="step === 4">
         <div class="field">
           <label class="label is-large">Launcher Icon</label>
           <div class="file has-name">
@@ -66,15 +67,14 @@
                 </span>
               </span>
               <span class="file-name">
-                {{form.launcherIcon | json}}
+                {{form.launcherIcon || 'Empty'}}
               </span>
             </label>
           </div>
           <p class="help">Your app's icon. Should be of equal width and height, and a minimum of 192 x 192 pixels.</p>
         </div>
-        <button class="button is-primary" (click)="nextStep()">Next</button>
       </div>
-      <div class="step" *ngIf="step === 4">
+      <div class="step" *ngIf="step === 5">
         <div class="field">
           <label class="label is-large">Primary Color</label>
           <div class="control">
@@ -92,9 +92,8 @@
             dark
             forms the status bar.</p>
         </div>
-        <button class="button is-primary" (click)="nextStep()">Next</button>
       </div>
-      <div class="step" *ngIf="step === 5">
+      <div class="step" *ngIf="step === 6">
         <div class="field">
           <label class="label is-large">App Settings</label>
           <div class="control">
@@ -157,9 +156,8 @@
             <input class="input" type="number" name="ratingDays" id="ratingDays" [(ngModel)]="form.ratingDays" />
           </label>
         </div>
-        <button class="button is-primary" (click)="nextStep()">Next</button>
       </div>
-      <div class="step" *ngIf="step === 6">
+      <div class="step" *ngIf="step === 7">
         <div class="field">
           <label class="label is-large">Orientations</label>
           <div class="control">
@@ -180,5 +178,22 @@
         </div>
       </div>
     </form>
+  </div>
+  <div class="field is-grouped is-grouped-centered">
+    <p class="control">
+      <a class="button is-light" (click)="previousStep()" *ngIf="step > 1">
+        Back
+      </a>
+    </p>
+    <p class="control">
+      <a class="button is-primary" (click)="nextStep()" *ngIf="step < numberOfSteps">
+        Next
+      </a>
+    </p>
+    <p class="control">
+      <a class="button is-primary" (click)="submit()" *ngIf="step === numberOfSteps">
+        Submit
+      </a>
+    </p>
   </div>
 </section>

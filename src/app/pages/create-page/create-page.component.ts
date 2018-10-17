@@ -25,6 +25,7 @@ export class CreatePageComponent implements OnInit {
     zoom: false
   };
   step = 1;
+  numberOfSteps = 7;
 
   constructor() {}
 
@@ -32,6 +33,10 @@ export class CreatePageComponent implements OnInit {
 
   nextStep() {
     this.step++;
+  }
+
+  previousStep() {
+    this.step--;
   }
 
   setStep(step: number) {
