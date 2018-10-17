@@ -35,7 +35,7 @@
           <label class="label is-large">Splash Screen Image</label>
           <div class="file has-name">
             <label class="file-label">
-              <input class="file-input" type="file" name="splashScreen" [(ngModel)]="form.splashScreen">
+              <input class="file-input" type="file" name="splashScreen" [(ngModel)]="form.splashScreen" (change)="fileChangeEvent($event, 'splashScreen')">
               <span class="file-cta">
                 <span class="file-icon">
                   <i class="fas fa-upload"></i>
@@ -51,13 +51,24 @@
           </div>
           <p class="help">Appears while your web app is loading. Should be 500 x 195 pixels.</p>
         </div>
+        <div class="field" *ngIf="form.splashScreen">
+          <div class="columns">
+            <div class="column">
+              <div class="file-cropper box has-text-centered">
+                <image-cropper [imageChangedEvent]="cropperImageChangedEvents.splashScreen" [maintainAspectRatio]="true"
+                  [aspectRatio]="100 / 39" [resizeToWidth]="500" format="png" (imageCropped)="imageCropped($event, 'splashScreen')"></image-cropper>
+              </div>
+            </div>
+            <div class="column has-text-centered"><img [src]="form.splashScreen" /></div>
+          </div>
+        </div>
       </div>
       <div class="step" *ngIf="step === 4">
         <div class="field">
           <label class="label is-large">Launcher Icon</label>
           <div class="file has-name">
             <label class="file-label">
-              <input class="file-input" type="file" name="launcherIcon" [(ngModel)]="form.launcherIcon">
+              <input class="file-input" type="file" name="launcherIcon" [(ngModel)]="form.launcherIcon" (change)="fileChangeEvent($event, 'launcherIcon')">
               <span class="file-cta">
                 <span class="file-icon">
                   <i class="fas fa-upload"></i>
@@ -72,6 +83,17 @@
             </label>
           </div>
           <p class="help">Your app's icon. Should be of equal width and height, and a minimum of 192 x 192 pixels.</p>
+        </div>
+        <div class="field" *ngIf="form.launcherIcon">
+          <div class="columns">
+            <div class="column">
+              <div class="file-cropper box has-text-centered">
+                <image-cropper [imageChangedEvent]="cropperImageChangedEvents.launcherIcon" [maintainAspectRatio]="true"
+                  [aspectRatio]="100 / 39" [resizeToWidth]="500" format="png" (imageCropped)="imageCropped($event, 'launcherIcon')"></image-cropper>
+              </div>
+            </div>
+            <div class="column has-text-centered"><img [src]="form.launcherIcon" /></div>
+          </div>
         </div>
       </div>
       <div class="step" *ngIf="step === 5">

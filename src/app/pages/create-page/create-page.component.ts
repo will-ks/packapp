@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ImageCroppedEvent } from 'ngx-image-cropper/src/image-cropper.component';
 
 @Component({
   selector: 'app-create-page',
@@ -26,6 +27,10 @@ export class CreatePageComponent implements OnInit {
   };
   step = 1;
   numberOfSteps = 7;
+  cropperImageChangedEvents = {
+    splashScreen: null,
+    launcherIcon: null
+  };
 
   constructor() {}
 
@@ -41,5 +46,12 @@ export class CreatePageComponent implements OnInit {
 
   setStep(step: number) {
     this.step = step;
+  }
+
+  fileChangeEvent(event: any, file: string): void {
+    this.cropperImageChangedEvents[file] = event;
+  }
+  imageCropped(event: ImageCroppedEvent, file: string) {
+    this.form[file] = event.base64;
   }
 }

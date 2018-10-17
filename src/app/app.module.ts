@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { AppComponent } from './app.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    ColorPickerModule
+    ColorPickerModule,
+    ImageCropperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

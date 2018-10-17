@@ -23,6 +23,7 @@
     "bulma": "^0.7.2",
     "core-js": "^2.5.4",
     "ngx-color-picker": "^6.7.0",
+    "ngx-image-cropper": "^1.2.2",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
   },
