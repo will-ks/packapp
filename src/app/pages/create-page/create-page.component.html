@@ -19,6 +19,9 @@
             <input class="input" [class.is-danger]="feedbackEnabled && url.invalid" type="text" name="url" placeholder="http://"
               [(ngModel)]="form.url" #url="ngModel" pattern='^(ftp|http|https):\/\/[^ "]+$' required />
           </div>
+          <p class="help is-danger" *ngIf="feedbackEnabled && form.url !== 'http://' && url.invalid">This doesn't look
+            like a valid
+            URL. Please make sure you include the full URL with the protocol (eg. http://)</p>
           <p class="help">The full URL to your web app, to load in the webview.</p>
         </div>
       </div>
@@ -27,8 +30,10 @@
           <label class="label is-large">App Name</label>
           <div class="control">
             <input class="input" [class.is-danger]="feedbackEnabled && appName.invalid" type="text" name="appName"
-              placeholder="App name" [(ngModel)]="form.appName" #appName="ngModel" required />
+              placeholder="App name" [(ngModel)]="form.appName" #appName="ngModel" pattern='^[a-zA-Z0-9]*$' required />
           </div>
+          <p class="help is-danger" *ngIf="feedbackEnabled && form.appName && appName.invalid">Only alphanumeric
+            characters are allowed (A-Z, 0-9).</p>
           <p class="help">The name of your app, will also form the name of your apk package.</p>
         </div>
       </div>
