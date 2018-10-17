@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
@@ -23,7 +24,8 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes),
     ColorPickerModule,
-    ImageCropperModule
+    ImageCropperModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,13 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageCroppedEvent } from 'ngx-image-cropper/src/image-cropper.component';
 import { isDevMode } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-create-page',
   templateUrl: './create-page.component.html',
   styleUrls: ['./create-page.component.scss']
 })
 export class CreatePageComponent implements OnInit {
+  httpOptions = {
+    withCredentials: true,
+    headers: null
+  };
   form = {
     appName: '',
     url: 'http://',
@@ -34,7 +44,9 @@ export class CreatePageComponent implements OnInit {
   };
   feedbackEnabled = false;
 
-  constructor() {}
+  private baseUrl = `${environment.server}/builds`;
+
+  constructor(private httpClient: HttpClient) {}
 
   ngOnInit() {}
 
@@ -51,6 +63,13 @@ export class CreatePageComponent implements OnInit {
 
   handlePreviousStep() {
     this.step--;
+  }
+
+  handleSubmit() {
+    const data = this.form;
+    return this.httpClient
+      .post(this.baseUrl, data, this.httpOptions)
+      .toPromise();
   }
 
   // --- Utility Functions --- //
