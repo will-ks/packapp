@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageCroppedEvent } from 'ngx-image-cropper/src/image-cropper.component';
+import { isDevMode } from '@angular/core';
 
 @Component({
   selector: 'app-create-page',
@@ -53,5 +54,9 @@ export class CreatePageComponent implements OnInit {
   }
   imageCropped(event: ImageCroppedEvent, file: string) {
     this.form[file] = event.base64;
+  }
+
+  isProduction() {
+    return !isDevMode();
   }
 }

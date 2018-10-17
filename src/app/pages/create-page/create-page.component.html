@@ -2,12 +2,12 @@
   <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
     <ul>
       <li [class.is-active]="step === 1"><a (click)="setStep(1)">●</a></li>
-      <li [class.is-active]="step === 2"><a (click)="setStep(2)">●</a></li>
-      <li [class.is-active]="step === 3"><a (click)="setStep(3)">●</a></li>
-      <li [class.is-active]="step === 4"><a (click)="setStep(4)">●</a></li>
-      <li [class.is-active]="step === 5"><a (click)="setStep(5)">●</a></li>
-      <li [class.is-active]="step === 6"><a (click)="setStep(6)">●</a></li>
-      <li [class.is-active]="step === 7"><a (click)="setStep(7)">●</a></li>
+      <li [class.is-active]="step === 2"><a (click)="setStep(2)" [class.disabled]="step < 2 && isProduction()">●</a></li>
+      <li [class.is-active]="step === 3"><a (click)="setStep(3)" [class.disabled]="step < 3 && isProduction()">●</a></li>
+      <li [class.is-active]="step === 4"><a (click)="setStep(4)" [class.disabled]="step < 4 && isProduction()">●</a></li>
+      <li [class.is-active]="step === 5"><a (click)="setStep(5)" [class.disabled]="step < 5 && isProduction()">●</a></li>
+      <li [class.is-active]="step === 6"><a (click)="setStep(6)" [class.disabled]="step < 6 && isProduction()">●</a></li>
+      <li [class.is-active]="step === 7"><a (click)="setStep(7)" [class.disabled]="step < 7 && isProduction()">●</a></li>
     </ul>
   </nav>
   <div class="container box">
