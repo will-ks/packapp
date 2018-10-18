@@ -23,7 +23,6 @@ export class CreatePageComponent implements OnInit {
     appName: '',
     url: 'http://',
     splashScreen: null,
-    splashScreenFile: File,
     launcherIcon: null,
     primaryColor: '#29b6f6',
     secondaryColor: '#0086c3',
@@ -80,18 +79,21 @@ export class CreatePageComponent implements OnInit {
 
   async handleSubmit() {
     const data = this.form;
-    await this.uploadFile(
-      this.cropperImagesFiles.splashScreen,
-      this.form.splashScreen
-    );
-    await this.uploadFile(
-      this.cropperImagesFiles.launcherIcon,
-      this.form.launcherIcon
-    );
-    console.log('finished async');
-    // return this.httpClient
-    //   .post(this.baseUrl, data, this.httpOptions)
-    //   .toPromise();
+    try {
+      await this.uploadFile(
+        this.cropperImagesFiles.splashScreen,
+        this.form.splashScreen
+      );
+      await this.uploadFile(
+        this.cropperImagesFiles.launcherIcon,
+        this.form.launcherIcon
+      );
+      await this.httpClient
+        .post(this.baseUrl, data, this.httpOptions)
+        .toPromise();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   // --- Utility Functions --- //
@@ -112,7 +114,7 @@ export class CreatePageComponent implements OnInit {
   imageCropped(event: ImageCroppedEvent, file: string) {
     this.cropperImagesBase64[file] = event.base64;
     this.cropperImagesFiles[file] = event.file;
-    this.form[file] = `${new Date().getTime()}_${Math.floor(
+    this.form[file] = `${new Date().getTime()}0000${Math.floor(
       Math.random() * 9999 + 1
     )}`;
   }
