@@ -4,10 +4,7 @@ import { isDevMode } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import {
-  AngularFireStorage,
-  AngularFireUploadTask
-} from '@angular/fire/storage';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -47,13 +44,15 @@ export class CreatePageComponent implements OnInit {
     splashScreen: null,
     launcherIcon: null
   };
+  cropperImagesFiles = {
+    splashScreen: null,
+    launcherIcon: null
+  };
   cropperImagesBase64 = {
     splashScreen: null,
     launcherIcon: null
   };
   feedbackEnabled = false;
-  task: AngularFireUploadTask;
-  ref: any;
 
   private baseUrl = `${environment.server}/builds`;
 
@@ -79,22 +78,28 @@ export class CreatePageComponent implements OnInit {
     this.step--;
   }
 
-  handleSubmit() {
+  async handleSubmit() {
     const data = this.form;
-    const filePath = 'foo';
-    this.ref = this.storage.ref(filePath);
-    this.ref
-      .put(this.form.splashScreen)
-      .then(() => {
-        console.log('success');
-      })
-      .catch(err => console.log(err));
+    await this.uploadFile(
+      this.cropperImagesFiles.splashScreen,
+      this.form.splashScreen
+    );
+    await this.uploadFile(
+      this.cropperImagesFiles.launcherIcon,
+      this.form.launcherIcon
+    );
+    console.log('finished async');
     // return this.httpClient
     //   .post(this.baseUrl, data, this.httpOptions)
     //   .toPromise();
   }
 
   // --- Utility Functions --- //
+
+  uploadFile(file, filename) {
+    const ref = this.storage.ref(filename);
+    return ref.put(file);
+  }
 
   setStep(step: number) {
     this.step = step;
@@ -106,7 +111,10 @@ export class CreatePageComponent implements OnInit {
 
   imageCropped(event: ImageCroppedEvent, file: string) {
     this.cropperImagesBase64[file] = event.base64;
-    this.form[file] = event.file;
+    this.cropperImagesFiles[file] = event.file;
+    this.form[file] = `${new Date().getTime()}_${Math.floor(
+      Math.random() * 9999 + 1
+    )}`;
   }
 
   isProduction() {
