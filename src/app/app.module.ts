@@ -8,6 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment.prod';
 
 // --- Routes --- //
 const routes: Routes = [
@@ -25,7 +28,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ColorPickerModule,
     ImageCropperModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

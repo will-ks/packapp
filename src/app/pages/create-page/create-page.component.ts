@@ -4,6 +4,10 @@ import { isDevMode } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import {
+  AngularFireStorage,
+  AngularFireUploadTask
+} from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +26,7 @@ export class CreatePageComponent implements OnInit {
     appName: '',
     url: 'http://',
     splashScreen: null,
+    splashScreenFile: File,
     launcherIcon: null,
     primaryColor: '#29b6f6',
     secondaryColor: '#0086c3',
@@ -42,11 +47,20 @@ export class CreatePageComponent implements OnInit {
     splashScreen: null,
     launcherIcon: null
   };
+  cropperImagesBase64 = {
+    splashScreen: null,
+    launcherIcon: null
+  };
   feedbackEnabled = false;
+  task: AngularFireUploadTask;
+  ref: any;
 
   private baseUrl = `${environment.server}/builds`;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private storage: AngularFireStorage
+  ) {}
 
   ngOnInit() {}
 
@@ -67,9 +81,17 @@ export class CreatePageComponent implements OnInit {
 
   handleSubmit() {
     const data = this.form;
-    return this.httpClient
-      .post(this.baseUrl, data, this.httpOptions)
-      .toPromise();
+    const filePath = 'foo';
+    this.ref = this.storage.ref(filePath);
+    this.ref
+      .put(this.form.splashScreen)
+      .then(() => {
+        console.log('success');
+      })
+      .catch(err => console.log(err));
+    // return this.httpClient
+    //   .post(this.baseUrl, data, this.httpOptions)
+    //   .toPromise();
   }
 
   // --- Utility Functions --- //
@@ -83,7 +105,8 @@ export class CreatePageComponent implements OnInit {
   }
 
   imageCropped(event: ImageCroppedEvent, file: string) {
-    this.form[file] = event.base64;
+    this.cropperImagesBase64[file] = event.base64;
+    this.form[file] = event.file;
   }
 
   isProduction() {
