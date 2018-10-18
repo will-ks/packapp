@@ -27,7 +27,7 @@ export class CreatePageComponent implements OnInit {
     primaryColor: '#29b6f6',
     secondaryColor: '#0086c3',
     camera: false,
-    externalUrls: false,
+    externalUrls: true,
     gps: false,
     landscape: false,
     portrait: true,
