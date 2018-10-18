@@ -206,9 +206,12 @@
       </a>
     </p>
     <p class="control">
-      <a class="button is-primary" (click)="handleSubmit()" *ngIf="step === numberOfSteps">
+      <a class="button is-primary" [class.is-loading]="submitted" (click)="handleSubmit()" *ngIf="step === numberOfSteps">
         Submit
       </a>
     </p>
+  </div>
+  <div class="field has-text-centered" *ngIf="submitError">
+    <p class="tag is-danger">There was an error submitting your data. Please try again.</p>
   </div>
 </section>

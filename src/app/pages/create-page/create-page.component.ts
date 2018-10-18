@@ -52,6 +52,8 @@ export class CreatePageComponent implements OnInit {
     launcherIcon: null
   };
   feedbackEnabled = false;
+  submitted = false;
+  submitError = false;
 
   private baseUrl = `${environment.server}/builds`;
 
@@ -77,7 +79,15 @@ export class CreatePageComponent implements OnInit {
     this.step--;
   }
 
-  async handleSubmit() {
+  handleSubmit() {
+    this.submitted = true;
+    this.submitError = false;
+    this.postData();
+  }
+
+  // --- Utility Functions --- //
+
+  async postData() {
     const data = this.form;
     try {
       await this.uploadFile(
@@ -93,10 +103,10 @@ export class CreatePageComponent implements OnInit {
         .toPromise();
     } catch (err) {
       console.log(err);
+      this.submitError = true;
+      this.submitted = false;
     }
   }
-
-  // --- Utility Functions --- //
 
   uploadFile(file, filename) {
     const ref = this.storage.ref(filename);
