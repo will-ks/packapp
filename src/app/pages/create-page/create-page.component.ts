@@ -51,6 +51,10 @@ export class CreatePageComponent implements OnInit {
     splashScreen: null,
     launcherIcon: null
   };
+  fileInputFiles = {
+    splashScreen: null,
+    launcherIcon: null
+  };
   feedbackEnabled = false;
   submitted = false;
   submitError = false;

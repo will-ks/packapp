@@ -42,7 +42,7 @@
           <label class="label is-large">Splash Screen Image</label>
           <div class="file" [class.is-danger]="feedbackEnabled && splashScreen.invalid">
             <label class="file-label">
-              <input class="file-input" type="file" name="splashScreen" (change)="fileChangeEvent($event, 'splashScreen')"
+              <input class="file-input" type="file" name="splashScreen" (change)="fileChangeEvent($event, 'splashScreen')" [(ngModel)]="fileInputFiles.splashScreen" #splashScreen="ngModel"
                 required accept="image/*">
               <span class="file-cta">
                 <span class="file-icon">
@@ -68,7 +68,7 @@
           <label class="label is-large">Launcher Icon</label>
           <div class="file" [class.is-danger]="feedbackEnabled && launcherIcon.invalid">
             <label class="file-label">
-              <input class="file-input" type="file" name="launcherIcon" (change)="fileChangeEvent($event, 'launcherIcon')"
+              <input class="file-input" type="file" name="launcherIcon" (change)="fileChangeEvent($event, 'launcherIcon')"  [(ngModel)]="fileInputFiles.launcherIcon" #launcherIcon="ngModel"
                 required accept="image/*">
               <span class="file-cta">
                 <span class="file-icon">
