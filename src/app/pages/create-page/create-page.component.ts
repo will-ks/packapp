@@ -80,6 +80,7 @@ export class CreatePageComponent implements OnInit {
   }
 
   handlePreviousStep() {
+    this.feedbackEnabled = false;
     this.step--;
   }
 
@@ -118,6 +119,7 @@ export class CreatePageComponent implements OnInit {
   }
 
   setStep(step: number) {
+    this.feedbackEnabled = false;
     this.step = step;
   }
 
