@@ -12,11 +12,11 @@ $brown: #757763;
 $beige-light: #d0d1cd;
 $beige-lighter: #eff0eb;
 
-$tangerine: #f58a07;
-$darkcerulean: #084887;
-$darkcyan: #009588;
-$rajah: #f9ab55;
-$magnolia: #f7f5fb;
+$tangerine: #ff9800;
+$darkcerulean: #3f51b5;
+$darkcyan: #009688;
+$rajah: #ffac33;
+$magnolia: #eff3f4;
 
 // Update Bulma's global variables
 $family-sans-serif: 'Nunito', sans-serif;
@@ -29,7 +29,7 @@ $link: $rajah;
 $gap: 256px;
 
 // Update some of Bulma's component variables
-// $body-background-color: white;
+$body-background-color: $magnolia;
 // $control-border-width: 2px;
 // $input-border-color: transparent;
 // $input-shadow: none;

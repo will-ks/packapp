@@ -201,12 +201,12 @@
       </a>
     </p>
     <p class="control">
-      <a class="button is-primary" (click)="handleNextStep(createForm)" *ngIf="step < numberOfSteps">
+      <a class="button is-success" (click)="handleNextStep(createForm)" *ngIf="step < numberOfSteps">
         Next
       </a>
     </p>
     <p class="control">
-      <a class="button is-primary" [class.is-loading]="submitted" (click)="handleSubmit()" *ngIf="step === numberOfSteps">
+      <a class="button is-success" [class.is-loading]="submitted" (click)="handleSubmit()" *ngIf="step === numberOfSteps">
         Submit
       </a>
     </p>

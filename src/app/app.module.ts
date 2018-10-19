@@ -11,6 +11,7 @@ import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment.prod';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 // --- Routes --- //
 const routes: Routes = [
@@ -21,7 +22,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, CreatePageComponent],
+  declarations: [AppComponent, CreatePageComponent, NavbarComponent],
   imports: [
     BrowserModule,
     FormsModule,
