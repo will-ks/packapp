@@ -11,7 +11,7 @@
     </ul>
   </nav>
   <div class="container box">
-    <form #createForm="ngForm" novalidate>
+    <form #createForm="ngForm" (ngSubmit)="handleNextStep(createForm)" novalidate>
       <div class="step" *ngIf="step === 1">
         <div class="field">
           <label class="label is-large">Web App URL</label>

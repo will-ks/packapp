@@ -71,6 +71,10 @@ export class CreatePageComponent implements OnInit {
   // --- Controller API --- //
 
   handleNextStep(form) {
+    if (this.step === this.numberOfSteps) {
+      this.handleSubmit();
+      return null;
+    }
     if (form.valid) {
       this.step++;
       this.feedbackEnabled = false;
