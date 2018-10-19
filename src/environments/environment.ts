@@ -6,12 +6,12 @@ export const environment = {
   production: false,
   server: 'http://localhost:3000',
   firebase: {
-    apiKey: 'AIzaSyAX2jF3d7Un5rtlTQponPqYtv16wB378MA',
-    authDomain: 'video-212118.firebaseapp.com',
-    databaseURL: 'https://video-212118.firebaseio.com',
-    projectId: 'video-212118',
-    storageBucket: 'video-212118.appspot.com',
-    messagingSenderId: '1060676564283'
+    apiKey: 'AIzaSyCJBhCAKce8MJGX89rONXDCrmGq-B_KeKk',
+    authDomain: 'projectcountdown-195619.firebaseapp.com',
+    databaseURL: 'https://projectcountdown-195619.firebaseio.com',
+    projectId: 'projectcountdown-195619',
+    storageBucket: 'projectcountdown-195619.appspot.com',
+    messagingSenderId: '352779741386'
   }
 };
 
