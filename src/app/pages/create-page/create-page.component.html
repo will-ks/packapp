@@ -17,7 +17,7 @@
           <label class="label is-large">Web App URL</label>
           <div class="control">
             <input class="input" [class.is-danger]="feedbackEnabled && url.invalid" type="text" name="url" placeholder="http://"
-              [(ngModel)]="form.url" #url="ngModel" pattern='^(ftp|http|https):\/\/[^ "]+$' required />
+              [(ngModel)]="form.url" #url="ngModel" pattern='^(ftp|http|https):\/\/[^ "]+$' maxlength="2083" required />
           </div>
           <p class="help is-danger" *ngIf="feedbackEnabled && form.url !== 'http://' && url.invalid">This doesn't look
             like a valid
@@ -30,7 +30,8 @@
           <label class="label is-large">App Name</label>
           <div class="control">
             <input class="input" [class.is-danger]="feedbackEnabled && appName.invalid" type="text" name="appName"
-              placeholder="App name" [(ngModel)]="form.appName" #appName="ngModel" pattern='^[a-zA-Z0-9]*$' required />
+              placeholder="App name" [(ngModel)]="form.appName" #appName="ngModel" pattern='^[a-zA-Z0-9]*$' maxlength="50"
+              required />
           </div>
           <p class="help is-danger" *ngIf="feedbackEnabled && form.appName && appName.invalid">Only alphanumeric
             characters are allowed (A-Z, 0-9).</p>
@@ -42,8 +43,8 @@
           <label class="label is-large">Splash Screen Image</label>
           <div class="file" [class.is-danger]="feedbackEnabled && splashScreen.invalid">
             <label class="file-label">
-              <input class="file-input" type="file" name="splashScreen" (change)="fileChangeEvent($event, 'splashScreen')" [(ngModel)]="fileInputFiles.splashScreen" #splashScreen="ngModel"
-                required accept="image/*">
+              <input class="file-input" type="file" name="splashScreen" (change)="fileChangeEvent($event, 'splashScreen')"
+                [(ngModel)]="fileInputFiles.splashScreen" #splashScreen="ngModel" required accept="image/*">
               <span class="file-cta">
                 <span class="file-icon">
                   <i class="fas fa-upload"></i>
@@ -68,8 +69,8 @@
           <label class="label is-large">Launcher Icon</label>
           <div class="file" [class.is-danger]="feedbackEnabled && launcherIcon.invalid">
             <label class="file-label">
-              <input class="file-input" type="file" name="launcherIcon" (change)="fileChangeEvent($event, 'launcherIcon')"  [(ngModel)]="fileInputFiles.launcherIcon" #launcherIcon="ngModel"
-                required accept="image/*">
+              <input class="file-input" type="file" name="launcherIcon" (change)="fileChangeEvent($event, 'launcherIcon')"
+                [(ngModel)]="fileInputFiles.launcherIcon" #launcherIcon="ngModel" required accept="image/*">
               <span class="file-cta">
                 <span class="file-icon">
                   <i class="fas fa-upload"></i>
