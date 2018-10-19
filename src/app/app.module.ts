@@ -12,6 +12,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment.prod';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 // --- Routes --- //
 const routes: Routes = [
@@ -22,7 +23,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, CreatePageComponent, NavbarComponent],
+  declarations: [AppComponent, CreatePageComponent, NavbarComponent, FooterComponent],
   imports: [
     BrowserModule,
     FormsModule,
