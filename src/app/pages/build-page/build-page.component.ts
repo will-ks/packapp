@@ -11,6 +11,8 @@ import { environment } from '../../../environments/environment';
 export class BuildPageComponent implements OnInit {
   private buildId: string;
   public building = false;
+  public waiting = false;
+  public error = false;
   private baseUrl = `${environment.server}/builds`;
   private httpOptions = {
     withCredentials: true,
@@ -24,10 +26,22 @@ export class BuildPageComponent implements OnInit {
   ngOnInit() {}
 
   handleStartBuilding() {
+    this.waiting = true;
+    this.error = false;
     const data = {
       building: true
     };
-    this.httpClient.put(this.baseUrl, data, this.httpOptions).toPromise();
-    this.building = true;
+    this.httpClient
+      .put(`${this.baseUrl}/${this.buildId}`, data, this.httpOptions)
+      .toPromise()
+      .then(() => {
+        this.waiting = false;
+        this.building = true;
+      })
+      .catch(err => {
+        console.log(err);
+        this.waiting = false;
+        this.error = true;
+      });
   }
 }
