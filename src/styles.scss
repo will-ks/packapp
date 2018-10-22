@@ -33,6 +33,8 @@ $body-background-color: $magnolia;
 // $control-border-width: 2px;
 // $input-border-color: transparent;
 // $input-shadow: none;
+$navbar-height: 5.25rem;
+$navbar-item-img-max-height: 3.75rem;
 
 // Import only what you need from Bulma
 @import '../node_modules/bulma/sass/utilities/_all.sass';
