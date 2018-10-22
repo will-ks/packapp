@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  handleNavbarToggle() {
+    const navbar = document.getElementById('navbarMenu');
+    navbar.classList.toggle('is-active');
   }
-
 }
