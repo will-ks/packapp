@@ -94,7 +94,7 @@ export class CreatePageComponent implements OnInit {
     this.submitted = true;
     this.submitError = false;
     this.postData()
-      .then(result => {
+      .then((result: any) => {
         const id = result.id;
         this.router.navigate([`/build/${id}`]);
       })
