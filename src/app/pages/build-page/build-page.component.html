@@ -1,0 +1,13 @@
+<section class="section">
+  <div class="container box has-text-centered">
+    <div>
+      <h1 class="title">Ready to build</h1>
+      <p>We're ready to start building your app. Click below to start.</p>
+    </div>
+  </div>
+  <div class="container box has-text-centered">
+    <div class="field"><a class="button is-success" (click)="handleStartBuilding()" [class.is-loading]="building">Start
+        Building</a></div>
+    <div class="notification is-primary" *ngIf="building">Starting build. Building may take up to 5 minutes.</div>
+  </div>
+</section>

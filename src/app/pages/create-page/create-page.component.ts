@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -63,7 +64,8 @@ export class CreatePageComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -91,7 +93,16 @@ export class CreatePageComponent implements OnInit {
   handleSubmit() {
     this.submitted = true;
     this.submitError = false;
-    this.postData();
+    this.postData()
+      .then(result => {
+        const id = result.id;
+        this.router.navigate([`/build/${id}`]);
+      })
+      .catch(err => {
+        console.log(err);
+        this.submitError = true;
+        this.submitted = false;
+      });
   }
 
   // --- Utility Functions --- //
@@ -107,7 +118,7 @@ export class CreatePageComponent implements OnInit {
         this.cropperImagesFiles.launcherIcon,
         this.form.launcherIcon
       );
-      await this.httpClient
+      return this.httpClient
         .post(this.baseUrl, data, this.httpOptions)
         .toPromise();
     } catch (err) {

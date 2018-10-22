@@ -13,17 +13,28 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment.prod';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BuildPageComponent } from './pages/build-page/build-page.component';
 
 // --- Routes --- //
 const routes: Routes = [
   {
     path: '',
     component: CreatePageComponent
+  },
+  {
+    path: 'build/:id',
+    component: BuildPageComponent
   }
 ];
 
 @NgModule({
-  declarations: [AppComponent, CreatePageComponent, NavbarComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    CreatePageComponent,
+    NavbarComponent,
+    FooterComponent,
+    BuildPageComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,
