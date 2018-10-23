@@ -55,6 +55,7 @@ export class BuildPageComponent implements OnInit {
 
   pollStatus() {
     this.buildService.poll(this.buildId).then((result: any) => {
+      console.log(result);
       this.builtApk = result.builtApk;
       this.buildError = result.buildError;
       this.building = !result.builtApk;
