@@ -2,7 +2,12 @@
   <div class="container box has-text-centered">
     <div>
       <h1 class="title">Build Complete!</h1>
-      <p>Your new app is ready!</p>
+      <p>Your new app is ready! Click below to download the APK file.</p>
+    </div>
+  </div>
+  <div class="container box has-text-centered">
+    <div class="field" *ngIf="!builtApk"><a class="button is-success is-large" href="{{downloadUrl}}" target="_blank"
+        [class.is-loading]="!downloadUrl">Download</a>
     </div>
   </div>
 </section>
