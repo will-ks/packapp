@@ -14,6 +14,7 @@ import { environment } from '../environments/environment.prod';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BuildPageComponent } from './pages/build-page/build-page.component';
+import { ResultPageComponent } from './pages/result-page/result-page.component';
 
 // --- Routes --- //
 const routes: Routes = [
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'build/:id',
     component: BuildPageComponent
+  },
+  {
+    path: 'result/:id',
+    component: ResultPageComponent
   }
 ];
 
@@ -33,7 +38,8 @@ const routes: Routes = [
     CreatePageComponent,
     NavbarComponent,
     FooterComponent,
-    BuildPageComponent
+    BuildPageComponent,
+    ResultPageComponent
   ],
   imports: [
     BrowserModule,

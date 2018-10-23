@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { BuildService } from 'src/app/services/build.service';
 
 @Component({
   selector: 'app-build-page',
@@ -13,13 +12,8 @@ export class BuildPageComponent implements OnInit {
   public building = false;
   public waiting = false;
   public error = false;
-  private baseUrl = `${environment.server}/builds`;
-  private httpOptions = {
-    withCredentials: true,
-    headers: null
-  };
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
+  constructor(private route: ActivatedRoute, private buildService: BuildService) {
     this.buildId = this.route.snapshot.params.id;
   }
 
@@ -31,9 +25,7 @@ export class BuildPageComponent implements OnInit {
     const data = {
       building: true
     };
-    this.httpClient
-      .put(`${this.baseUrl}/${this.buildId}`, data, this.httpOptions)
-      .toPromise()
+    this.buildService.update(this.buildId, data)
       .then(() => {
         this.waiting = false;
         this.building = true;
@@ -44,4 +36,6 @@ export class BuildPageComponent implements OnInit {
         this.error = true;
       });
   }
+
+
 }
