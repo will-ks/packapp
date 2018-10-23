@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ImageCroppedEvent } from 'ngx-image-cropper/src/image-cropper.component';
 import { isDevMode } from '@angular/core';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Router } from '@angular/router';
+import { BuildService } from 'src/app/services/build.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +15,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-page.component.scss']
 })
 export class CreatePageComponent implements OnInit {
-  httpOptions = {
-    withCredentials: true,
-    headers: null
-  };
   form = {
     appName: '',
     url: 'http://',
@@ -60,12 +55,10 @@ export class CreatePageComponent implements OnInit {
   submitted = false;
   submitError = false;
 
-  private baseUrl = `${environment.server}/builds`;
-
   constructor(
-    private httpClient: HttpClient,
     private storage: AngularFireStorage,
-    private router: Router
+    private router: Router,
+    private buildService: BuildService
   ) {}
 
   ngOnInit() {}
@@ -118,9 +111,7 @@ export class CreatePageComponent implements OnInit {
         this.cropperImagesFiles.launcherIcon,
         this.form.launcherIcon
       );
-      return this.httpClient
-        .post(this.baseUrl, data, this.httpOptions)
-        .toPromise();
+      return this.buildService.create(data);
     } catch (err) {
       console.log(err);
       this.submitError = true;

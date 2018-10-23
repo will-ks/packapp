@@ -12,11 +12,17 @@ export class BuildService {
     headers: null
   };
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
-  update(id: string,data: object) {
+  create(data: object) {
     return this.httpClient
-    .put(`${this.baseUrl}/${id}`, data, this.httpOptions)
-    .toPromise()
+      .post(this.baseUrl, data, this.httpOptions)
+      .toPromise();
+  }
+
+  update(id: string, data: object) {
+    return this.httpClient
+      .put(`${this.baseUrl}/${id}`, data, this.httpOptions)
+      .toPromise();
   }
 }
