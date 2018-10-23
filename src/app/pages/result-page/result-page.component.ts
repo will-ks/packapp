@@ -10,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ResultPageComponent implements OnInit {
   public downloadUrl: string;
   private buildId: string;
+  public userEmail: string;
+  public submitted = false;
 
   constructor(
     private buildService: BuildService,
@@ -22,4 +24,12 @@ export class ResultPageComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  handleSubmit(form) {
+    if (form.valid) {
+      this.buildService.submitEmail(this.buildId, this.userEmail).then(() => {
+        this.submitted = true;
+      });
+    }
+  }
 }

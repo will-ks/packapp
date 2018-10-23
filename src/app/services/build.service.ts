@@ -37,4 +37,10 @@ export class BuildService {
       .get(`${this.baseUrl}/${id}`, this.httpOptions)
       .toPromise();
   }
+
+  submitEmail(id: string, userEmail: string) {
+    return this.httpClient
+      .post(`${this.baseUrl}/email/${id}`, { userEmail }, this.httpOptions)
+      .toPromise();
+  }
 }

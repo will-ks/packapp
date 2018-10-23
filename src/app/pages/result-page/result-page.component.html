@@ -3,11 +3,26 @@
     <div>
       <h1 class="title">Build Complete!</h1>
       <p>Your new app is ready! Click below to download the APK file.</p>
+      <div class="field" *ngIf="!builtApk"><a class="button is-success is-large" href="{{downloadUrl}}" target="_blank"
+          [class.is-loading]="!downloadUrl">Download</a>
+      </div>
     </div>
   </div>
   <div class="container box has-text-centered">
-    <div class="field" *ngIf="!builtApk"><a class="button is-success is-large" href="{{downloadUrl}}" target="_blank"
-        [class.is-loading]="!downloadUrl">Download</a>
-    </div>
+    <h2 class="subtitle">Ready to release your app on the Google Play store?</h2>
+    <p>While we're in Alpha testing, you can only build debug build APKs, for testing purposes. These cannot be
+      released
+      on Google Play. Soon we'll enable you to build release-ready, digitally signed production builds for release on
+      Google Play and other stores. There is likely to be a small fee for this.</p>
+    <p>If you want to be contacted when this feature is available (and get an early adopter's discount), submit your
+      email below.</p>
+    <form class="form" #emailForm="ngForm" (ngSubmit)="handleSubmit(emailForm)" novalidate>
+      <div class="field">
+        <div class="control"><input type="email" class="input has-text-centered" placeholder="email@address.com" name="userEmail"
+            [(ngModel)]="userEmail" [class.disabled]="submitted" required /></div>
+      </div>
+      <button class="button is-primary" type="submit" *ngIf="!submitted">Submit</button>
+      <p class="help is-success" *ngIf="submitted">Thanks! We'll let you know when we're ready.</p>
+    </form>
   </div>
 </section>
