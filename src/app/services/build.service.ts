@@ -25,4 +25,10 @@ export class BuildService {
       .put(`${this.baseUrl}/${id}`, data, this.httpOptions)
       .toPromise();
   }
+
+  poll(id: string) {
+    return this.httpClient
+      .get(`${this.baseUrl}/poll/${id}`, this.httpOptions)
+      .toPromise();
+  }
 }

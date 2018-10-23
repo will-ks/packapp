@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BuildService } from 'src/app/services/build.service';
 
 @Component({
@@ -12,12 +12,26 @@ export class BuildPageComponent implements OnInit {
   public building = false;
   public waiting = false;
   public error = false;
+  private builtApk: string;
+  public buildError: boolean;
+  private intervalId: any;
+  private pollNumber = 0;
 
-  constructor(private route: ActivatedRoute, private buildService: BuildService) {
+  constructor(
+    private route: ActivatedRoute,
+    private buildService: BuildService,
+    private router: Router
+  ) {
     this.buildId = this.route.snapshot.params.id;
   }
 
   ngOnInit() {}
+
+  ngOnDestroy() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
 
   handleStartBuilding() {
     this.waiting = true;
@@ -25,10 +39,12 @@ export class BuildPageComponent implements OnInit {
     const data = {
       building: true
     };
-    this.buildService.update(this.buildId, data)
+    this.buildService
+      .update(this.buildId, data)
       .then(() => {
         this.waiting = false;
         this.building = true;
+        this.intervalId = setInterval(this.pollStatus.bind(this), 1000 * 5);
       })
       .catch(err => {
         console.log(err);
@@ -37,5 +53,20 @@ export class BuildPageComponent implements OnInit {
       });
   }
 
-
+  pollStatus() {
+    this.buildService.poll(this.buildId).then((result: any) => {
+      this.builtApk = result.builtApk;
+      this.buildError = result.buildError;
+      this.building = !result.builtApk;
+      this.pollNumber++;
+      if (this.builtApk) {
+        this.router.navigate([`/result/${this.buildId}`]);
+      }
+      if (this.pollNumber > (10 * 60) / 5) {
+        this.buildError = true;
+        this.building = false;
+        clearInterval(this.intervalId);
+      }
+    });
+  }
 }

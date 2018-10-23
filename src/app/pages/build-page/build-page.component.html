@@ -7,11 +7,16 @@
     </div>
   </div>
   <div class="container box has-text-centered">
-    <div class="field"><a class="button is-success" (click)="handleStartBuilding()" [class.is-loading]="waiting || building">Start
+    <div class="field" *ngIf="!builtApk"><a class="button is-success" (click)="handleStartBuilding()"
+        [class.is-loading]="waiting || building">Start
         Building</a>
     </div>
-    <div *ngIf="error" class="notification is-danger">
+    <div *ngIf=" error" class="notification is-danger">
       We encountered an error contacting the build server. Please refresh and try again.
+    </div>
+    <div *ngIf="buildError" class="notification is-danger">
+      Oops, we ran into an error building your app. We've been sent an error report and will look into what went wrong.
+      You can try the build again by refreshing the page.
     </div>
     <div *ngIf="building">
       <p>Please wait while we build your app.</p>
