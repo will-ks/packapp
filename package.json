@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "npx ngh"
+    "deploy": "ng build --prod --base-href 'https://dambusm.github.io/packapp/' && npx ngh"
   },
   "private": true,
   "dependencies": {
