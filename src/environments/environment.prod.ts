@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  server: 'https://projectcountdown-195619.appspot.com',
   firebase: {
     apiKey: 'AIzaSyCJBhCAKce8MJGX89rONXDCrmGq-B_KeKk',
     authDomain: 'projectcountdown-195619.firebaseapp.com',
