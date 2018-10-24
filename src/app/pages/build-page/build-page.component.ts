@@ -12,7 +12,7 @@ export class BuildPageComponent implements OnInit {
   public building = false;
   public waiting = false;
   public error = false;
-  private builtApk: string;
+  public builtApk: string;
   public buildError: boolean;
   private intervalId: any;
   private pollNumber = 0;

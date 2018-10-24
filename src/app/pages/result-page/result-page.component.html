@@ -3,7 +3,7 @@
     <div>
       <h1 class="title">Build Complete!</h1>
       <p>Your new app is ready! Click below to download the APK file.</p>
-      <div class="field" *ngIf="!builtApk"><a class="button is-success is-large" href="{{downloadUrl}}" target="_blank"
+      <div class="field"><a class="button is-success is-large" href="{{downloadUrl}}" target="_blank"
           [class.is-loading]="!downloadUrl">Download</a>
       </div>
     </div>
