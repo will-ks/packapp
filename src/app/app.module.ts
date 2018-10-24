@@ -15,11 +15,16 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BuildPageComponent } from './pages/build-page/build-page.component';
 import { ResultPageComponent } from './pages/result-page/result-page.component';
+import { IndexPageComponent } from './pages/index-page/index-page.component';
 
 // --- Routes --- //
 const routes: Routes = [
   {
     path: '',
+    component: IndexPageComponent
+  },
+  {
+    path: 'create',
     component: CreatePageComponent
   },
   {
@@ -39,7 +44,8 @@ const routes: Routes = [
     NavbarComponent,
     FooterComponent,
     BuildPageComponent,
-    ResultPageComponent
+    ResultPageComponent,
+    IndexPageComponent
   ],
   imports: [
     BrowserModule,
