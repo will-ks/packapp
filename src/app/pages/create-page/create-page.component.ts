@@ -73,6 +73,7 @@ export class CreatePageComponent implements OnInit {
     if (form.valid) {
       this.step++;
       this.feedbackEnabled = false;
+      window.scrollTo(0, 0);
     } else {
       this.feedbackEnabled = true;
     }
