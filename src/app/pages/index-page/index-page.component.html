@@ -1,11 +1,16 @@
-<section class="hero is-primary has-text-centered">
+<section class="hero is-primary has-text-centered is-medium">
   <div class="hero-body">
     <div class="container">
       <img src="assets/img/packapp-logo.png">
       <h2 class="subtitle">
         Web App <i class="fas fa-long-arrow-alt-right"></i> Android APK
       </h2>
-      <a class="button is-success is-large" [routerLink]="[ '/create' ]">Get Started</a>
+      <a class="button is-success is-large" [routerLink]="[ '/create' ]">
+        <span class="icon">
+          <i class="fas fa-box-open"></i>
+        </span>
+        <span>Create</span>
+      </a>
     </div>
   </div>
 </section>
@@ -17,6 +22,12 @@
     </p>
     <p>Easy to use and with no setup, you can have an Android 9.0+ compatible WebView application in no time.</p>
     <p>PackApp is free and open source.</p>
+    <a class="button is-info" [routerLink]="[ '/create' ]">
+      <span class="icon">
+        <i class="fab fa-github"></i>
+      </span>
+      <span>Github</span>
+    </a>
   </div>
 </section>
 <section class="section">

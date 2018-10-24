@@ -1,8 +1,8 @@
-<nav class="navbar is-success">
+<nav class="navbar is-success" *ngIf="router.url != '/'">
   <div class="container">
     <div class="navbar-brand">
-      <a class="navbar-item">
-        <img src="./assets/img/packapp-logo.png" alt="Logo" *ngIf="router.url != '/'">
+      <a class="navbar-item" [routerLink]="[ '/' ]">
+        <img src="./assets/img/packapp-logo.png" alt="Logo">
       </a>
       <span class="navbar-burger burger" data-target="navbarMenu" (click)="handleNavbarToggle()">
         <span></span>
@@ -12,12 +12,6 @@
     </div>
     <div id="navbarMenu" class="navbar-menu">
       <div class="navbar-end">
-        <a class="navbar-item">
-          Home
-        </a>
-        <a class="navbar-item">
-          Examples
-        </a>
         <span class="navbar-item">
           <a class="button is-success is-inverted is-outlined">
             <span class="icon">
@@ -27,7 +21,7 @@
           </a>
         </span>
         <span class="navbar-item">
-          <a class="button is-success is-inverted">
+          <a class="button is-success is-inverted" [routerLink]="[ '/create' ]">
             <span class="icon">
               <i class="fas fa-box-open"></i>
             </span>
