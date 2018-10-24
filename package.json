@@ -1,5 +1,5 @@
 {
-  "name": "packapp2-client",
+  "name": "packapp",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
