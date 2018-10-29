@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ResultPageComponent implements OnInit {
   public downloadUrl: string;
+  public sourceDownloadUrl: string;
   private buildId: string;
   public userEmail: string;
   public submitted = false;
@@ -20,6 +21,7 @@ export class ResultPageComponent implements OnInit {
     this.buildId = this.route.snapshot.params.id;
     this.buildService.get(this.buildId).then((result: any) => {
       this.downloadUrl = result.downloadUrl;
+      this.sourceDownloadUrl = result.sourceDownloadUrl;
     });
   }
 

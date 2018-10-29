@@ -6,7 +6,21 @@
         <p>Your new app is ready! Click below to download the APK file.</p>
       </div>
       <div class="field"><a class="button is-success is-large" href="{{downloadUrl}}" target="_blank"
-          [class.is-loading]="!downloadUrl">Download</a>
+          [class.is-loading]="!downloadUrl">
+          <span class="icon">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download App</span>
+        </a>
+      </div>
+      <div class="field">
+        <a class="button is-info is-outlined" href="{{sourceDownloadUrl}}" target="_blank" [class.is-loading]="!downloadUrl">
+          <span class="icon">
+            <i class="far fa-file-code"></i>
+          </span>
+          <span>Download
+            Source Code</span>
+        </a>
       </div>
     </div>
   </div>
@@ -15,7 +29,7 @@
     <p>While we're in Alpha testing, you can only build debug build APKs, for testing purposes. These cannot be
       released
       on Google Play.</p>
-      <p>Soon we'll enable you to build release-ready, digitally signed production builds for release on
+    <p>Soon we'll enable you to build release-ready, digitally signed production builds for release on
       Google Play and other stores. There is likely to be a small fee for this.</p>
     <p>If you want to be contacted when this feature is available (and get an early adopter's discount), submit your
       email below.</p>
