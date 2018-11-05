@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ImageCroppedEvent } from 'ngx-image-cropper/src/image-cropper.component';
 import { isDevMode } from '@angular/core';
 import { Injectable } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/storage';
+import {
+  AngularFireStorage,
+  AngularFireUploadTask
+} from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { BuildService } from 'src/app/services/build.service';
 
