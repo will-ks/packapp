@@ -27,13 +27,13 @@ export class BuildPageComponent implements OnInit {
 
   ngOnInit() {}
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.intervalId) {
       clearInterval(this.intervalId);
     }
   }
 
-  handleStartBuilding() {
+  handleStartBuilding(): void {
     this.waiting = true;
     this.error = false;
     const data = {
@@ -53,7 +53,7 @@ export class BuildPageComponent implements OnInit {
       });
   }
 
-  pollStatus() {
+  pollStatus(): void {
     this.buildService.poll(this.buildId).then((result: any) => {
       console.log(result);
       this.builtApk = result.builtApk;

@@ -27,7 +27,7 @@ export class ResultPageComponent implements OnInit {
 
   ngOnInit() {}
 
-  handleSubmit(form) {
+  handleSubmit(form): void {
     if (form.valid) {
       this.buildService.submitEmail(this.buildId, this.userEmail).then(() => {
         this.submitted = true;

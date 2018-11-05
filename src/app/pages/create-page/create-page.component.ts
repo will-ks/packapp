@@ -65,7 +65,7 @@ export class CreatePageComponent implements OnInit {
 
   // --- Controller API --- //
 
-  handleNextStep(form) {
+  handleNextStep(form): void {
     if (this.step === this.numberOfSteps) {
       this.handleSubmit();
       return null;
@@ -79,12 +79,12 @@ export class CreatePageComponent implements OnInit {
     }
   }
 
-  handlePreviousStep() {
+  handlePreviousStep(): void {
     this.feedbackEnabled = false;
     this.step--;
   }
 
-  handleSubmit() {
+  handleSubmit(): void {
     this.submitted = true;
     this.submitError = false;
     this.postData()
@@ -101,7 +101,7 @@ export class CreatePageComponent implements OnInit {
 
   // --- Utility Functions --- //
 
-  async postData() {
+  async postData(): Promise<Object> {
     const data = this.form;
     try {
       await this.uploadFile(
@@ -120,12 +120,12 @@ export class CreatePageComponent implements OnInit {
     }
   }
 
-  uploadFile(file, filename) {
+  uploadFile(file, filename): AngularFireUploadTask {
     const ref = this.storage.ref(filename);
     return ref.put(file);
   }
 
-  setStep(step: number) {
+  setStep(step: number): void {
     this.feedbackEnabled = false;
     this.step = step;
   }
@@ -134,7 +134,7 @@ export class CreatePageComponent implements OnInit {
     this.cropperImageChangedEvents[file] = event;
   }
 
-  imageCropped(event: ImageCroppedEvent, file: string) {
+  imageCropped(event: ImageCroppedEvent, file: string): void {
     this.cropperImagesBase64[file] = event.base64;
     this.cropperImagesFiles[file] = event.file;
     this.form[file] = `${new Date().getTime()}0000${Math.floor(
@@ -142,7 +142,7 @@ export class CreatePageComponent implements OnInit {
     )}`;
   }
 
-  isProduction() {
+  isProduction(): boolean {
     return !isDevMode();
   }
 }

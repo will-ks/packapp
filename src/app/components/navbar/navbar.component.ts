@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {}
 
-  handleNavbarToggle() {
+  handleNavbarToggle(): void {
     const navbar = document.getElementById('navbarMenu');
     navbar.classList.toggle('is-active');
   }
