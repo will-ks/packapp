@@ -5,41 +5,80 @@
         <h1 class="title">Build Complete!</h1>
         <p>Your new app is ready! Click below to download the APK file.</p>
       </div>
-      <div class="field"><a class="button is-success is-large" href="{{downloadUrl}}" target="_blank"
-          [class.is-loading]="!downloadUrl">
-          <span class="icon">
-            <i class="fas fa-download"></i>
-          </span>
+      <div class="field">
+        <a
+          class="button is-success is-large"
+          href="{{downloadUrl}}"
+          target="_blank"
+          [class.is-loading]="!downloadUrl"
+        >
+          <span class="icon"> <i class="fas fa-download"></i> </span>
           <span>Download App</span>
         </a>
+        <p>Download URL:</p>
+        <p>
+          <a href="{{downloadUrl}}" *ngIf="downloadUrl">{{ downloadUrl }}</a>
+        </p>
       </div>
       <div class="field">
-        <a class="button is-info is-outlined" href="{{sourceDownloadUrl}}" target="_blank" [class.is-loading]="!downloadUrl">
-          <span class="icon">
-            <i class="far fa-file-code"></i>
-          </span>
-          <span>Download
-            Source Code</span>
+        <a
+          class="button is-info is-outlined"
+          href="{{sourceDownloadUrl}}"
+          target="_blank"
+          [class.is-loading]="!downloadUrl"
+        >
+          <span class="icon"> <i class="far fa-file-code"></i> </span>
+          <span>Download Source Code</span>
         </a>
+        <p>Download URL:</p>
+        <p>
+          <a href="{{sourceDownloadUrl}}" *ngIf="sourceDownloadUrl">{{
+            sourceDownloadUrl
+          }}</a>
+        </p>
       </div>
     </div>
   </div>
   <div class="container box has-text-centered email-signup">
     <h2 class="subtitle">Ready to release your app on the Google Play?</h2>
-    <p>While we're in Alpha testing, you can only build debug build APKs, for testing purposes. These cannot be
-      released
-      on Google Play.</p>
-    <p>Soon we'll enable you to build release-ready, digitally signed production builds for release on
-      Google Play and other stores. There is likely to be a small fee for this.</p>
-    <p>If you want to be contacted when this feature is available (and get an early adopter's discount), submit your
-      email below.</p>
-    <form class="form" #emailForm="ngForm" (ngSubmit)="handleSubmit(emailForm)" novalidate>
+    <p>
+      While we're in Alpha testing, you can only build debug build APKs, for
+      testing purposes. These cannot be released on Google Play.
+    </p>
+    <p>
+      Soon we'll enable you to build release-ready, digitally signed production
+      builds for release on Google Play and other stores. There is likely to be
+      a small fee for this.
+    </p>
+    <p>
+      If you want to be contacted when this feature is available (and get an
+      early adopter's discount), submit your email below.
+    </p>
+    <form
+      class="form"
+      #emailForm="ngForm"
+      (ngSubmit)="handleSubmit(emailForm)"
+      novalidate
+    >
       <div class="field">
-        <div class="control"><input type="email" class="input has-text-centered" placeholder="email@address.com" name="userEmail"
-            [(ngModel)]="userEmail" [class.disabled]="submitted" required /></div>
+        <div class="control">
+          <input
+            type="email"
+            class="input has-text-centered"
+            placeholder="email@address.com"
+            name="userEmail"
+            [(ngModel)]="userEmail"
+            [class.disabled]="submitted"
+            required
+          />
+        </div>
       </div>
-      <button class="button is-primary" type="submit" *ngIf="!submitted">Submit</button>
-      <p class="help is-success" *ngIf="submitted">Thanks! We'll let you know when we're ready.</p>
+      <button class="button is-primary" type="submit" *ngIf="!submitted">
+        Submit
+      </button>
+      <p class="help is-success" *ngIf="submitted">
+        Thanks! We'll let you know when we're ready.
+      </p>
     </form>
   </div>
 </section>
