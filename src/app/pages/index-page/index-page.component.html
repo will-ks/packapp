@@ -5,12 +5,12 @@
       <h2 class="subtitle">
         Web App <i class="fas fa-long-arrow-alt-right"></i> Android APK
       </h2>
-      <a class="button is-success is-large" [routerLink]="[ '/create' ]">
+      <!-- <a class="button is-success is-large" [routerLink]="[ '/create' ]">
         <span class="icon">
           <i class="fas fa-box-open"></i>
         </span>
         <span>Create</span>
-      </a>
+      </a> -->
     </div>
   </div>
 </section>
@@ -76,6 +76,18 @@
         </div>
       </div>
     </div>
-    <a class="button is-success is-medium" [routerLink]="[ '/create' ]">Create Your App</a>
+    <a
+      class="button is-success is-medium is-static"
+      [routerLink]="['/create']"
+      disabled
+      >Create Your App</a
+    >
+    <article class="message is-danger" style="margin-top: 20px">
+      <div class="message-header"><p>Temporarily unavailable</p></div>
+      <div class="message-body">
+        Unfortunately the build server is temporarily down. I will be moving it
+        to a new provider soon.
+      </div>
+    </article>
   </div>
 </section>
