@@ -2,8 +2,6 @@
 
 PackApp is a cloud based build service that lets you package your web app or website into a WebView based Android APK.
 
-PackApp is live at https://dambusm.github.io/packapp
-
 This repo contains the PackApp web client, which is an Angular 6 app.
 
 ## Related Projects
